@@ -14,4 +14,46 @@ const connection = mysql.createConnection({
 connection.connect((err)=> {
     if (err) throw err
     console.log("base de donnée connecté");
+    getAlltask();
+    getAlluser();
+    gettaskByuser();
 });
+
+function getAlltask() {
+    
+    const select = "SELECT * FROM user";
+    connection.query(select, (err, result)=> {
+        if (err){
+            console.error("erreur", err);
+            return;
+        }
+    console.log('liste des utilisateurs');
+    console.log(result)
+});
+}
+ 
+function getAlluser() {
+    
+    const select = "SELECT * FROM task";
+    connection.query(select, (err, result)=> {
+        if (err){
+            console.error("erreur", err);
+            return;
+        }
+    console.log('liste des taches');
+    console.log(result)
+});
+}
+
+function gettaskByuser() {
+    /* sélectionner la base puis dans tâche joindre avec user et je veux que le user.id soit égale au task.owner */
+    const select = "SELECT * FROM task INNER JOIN user ON user.id = task.owner";
+    connection.query(select, (err, result) => {
+        if (err) {
+            console.error("erreur", err);
+            return;
+        }
+        console.log('liste des tâches par utilisateur ');
+        console.log(result);
+    });
+}
