@@ -18,7 +18,7 @@ connection.connect((err)=> {
     getAlluser();
     gettaskByuser();
 });
-
+// afficher les tâches
 function getAlltask() {
     
     const select = "SELECT * FROM user";
@@ -31,7 +31,7 @@ function getAlltask() {
     console.log(result)
 });
 }
- 
+//afficher les utilisateurs
 function getAlluser() {
     
     const select = "SELECT * FROM task";
