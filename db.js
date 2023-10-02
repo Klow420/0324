@@ -4,7 +4,7 @@ dotenv.config()
 console.log(process.env.dbname)
 export const connection = mysql.createConnection({
   host     : process.env.hostname,
-  port : '8889',
+  port : process.env.dbport,
   user     : process.env.dbuser,
   password : process.env.dbnamepassword,
   database : process.env.dbname,
