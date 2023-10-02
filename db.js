@@ -1,10 +1,13 @@
 import mysql from "mysql"
+import dotenv from"dotenv"
+dotenv.config()
+console.log(process.env.dbname)
 export const connection = mysql.createConnection({
-  host     : 'localhost',
+  host     : process.env.hostname,
   port : '8889',
-  user     : 'root',
-  password : 'root',
-  database : 'rest',
+  user     : process.env.dbuser,
+  password : process.env.dbnamepassword,
+  database : process.env.dbname,
   socket : '/Applications/MAMP/tmp/mysql/mysql.sock'
 });
  

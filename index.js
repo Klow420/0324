@@ -20,7 +20,7 @@ connection.connect((err)=> {
     getAlluser();
     gettaskByuser();
     editAllTaskByNameUser();
-    addTaskToUser(2, "repos", 1, 1);
+    // addTaskToUser(2, "repos", 1, 1);
 });
 // afficher les tâches
 // function getAlltask() {
