@@ -72,3 +72,19 @@ export function editAllTaskByNameUser(id) {
     });
 }
 
+// Fonction pour ajouter une tâche à un utilisateur par propriétaire
+export function addTaskToUser( taskId, taskDescription, taskComplete, ownerId) {
+    // Requête SQL d'INSERT pour ajouter une tâche avec le propriétaire spécifié
+    const insertQuery = "INSERT INTO task (id, description, complete, owner) VALUES (?, ?, ?,?)";
+
+    // Exécute la requête d'INSERT avec les paramètres appropriés
+    connection.query(insertQuery, [taskId, taskDescription, taskComplete, ownerId], (err, result) => {
+        if (err) {
+            console.error("Erreur lors de l'ajout de la tâche à l'utilisateur", err);
+            return;
+        }
+
+        console.log(`Tâche ajoutée à l'utilisateur avec l'ID ${ownerId}:`);
+        console.log(result);
+    });
+}

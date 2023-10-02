@@ -1,5 +1,5 @@
 console.log("coucou toto");
-import {getAlltask, getAlluser, gettaskByuser, editAllTaskByNameUser} from './controllers/task.js'
+import {getAlltask, getAlluser, gettaskByuser, editAllTaskByNameUser, addTaskToUser} from './controllers/task.js'
 import { connection } from './db.js';
 
 // import du packer mysql pour pouvoir l'utiliser ici
@@ -20,6 +20,7 @@ connection.connect((err)=> {
     getAlluser();
     gettaskByuser();
     editAllTaskByNameUser();
+    addTaskToUser(2, "repos", 1, 1);
 });
 // afficher les tâches
 // function getAlltask() {
