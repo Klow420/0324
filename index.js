@@ -72,7 +72,7 @@ app.set("view engine", "ejs");
 app.get('/', async (req, res) => {
     try {
         // Fetch data from the remote API
-        const response = await axios.get('https://api.jikan.moe/v4/anime?q=&sfw');
+        const response = await axios.get('https://api.jikan.moe/v4/anime');
         
         // Access the response data directly using response.data
         const data = response.data.data; // Assuming 'data' is an array of movies
