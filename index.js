@@ -16,10 +16,10 @@ import { connection } from './db.js';
 connection.connect((err)=> {
     if (err) throw err
     console.log("base de donnée connecté");
-    getAlltask();
-    getAlluser();
-    gettaskByuser();
-    editAllTaskByNameUser();
+    // getAlltask();
+    // getAlluser();
+    // gettaskByuser();
+    // editAllTaskByNameUser();
     // addTaskToUser(2, "repos", 1, 1);
 });
 // afficher les tâches
@@ -61,3 +61,44 @@ connection.connect((err)=> {
 //         console.log(result);
 //     });
 // }
+import  express  from 'express';
+const app = express()
+const port = 3000
+
+// faire un fetch
+import axios from 'axios';
+
+app.set("view engine", "ejs");
+app.get('/', async (req, res) => {
+    try {
+        // Fetch data from the remote API
+        const response = await axios.get('https://api.jikan.moe/v4/anime?q=&sfw');
+        
+        // Access the response data directly using response.data
+        const data = response.data.data; // Assuming 'data' is an array of movies
+        
+        // Render the EJS template with the movie data
+        res.render('index', { movies: data });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// pour avoir le front
+// app.set("view engine", "ejs");
+// app.get("/display", (req, res) => {
+//     res.render("index");
+// })
+// pour commencer à faire du json sur la page
+// app.get('/', (req, res) => {
+//     res.json({
+//         id : 1,
+//         user : "Anthony",
+//         age : 27
+//     })
+// })
+
+app.listen(port, () => {
+  console.log(`Example apps listening on port ${port}`)
+})
